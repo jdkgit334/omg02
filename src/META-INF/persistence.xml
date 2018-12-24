@@ -6,14 +6,41 @@
 		<class>models.Shop</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/omg02?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8"/>
-			<property name="javax.persistence.jdbc.user" value="repuser"/>
-			<property name="javax.persistence.jdbc.password" value="reppass"/>
-			<property name="javax.persistence.schema-generation.database.action" value="create"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://us-cdbr-iron-east-01.cleardb.net/heroku_d23118f3ac851b5?reconnect=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8&amp;characterSetResults=utf8"/>
+			<property name="javax.persistence.jdbc.password" value="f96e67eb"/>
+			<property name="javax.persistence.schema-generation.database.action" value="none"/>
 			<property name="javax.persistence.schema-generation.scripts.action" value="none"/>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
 			<property name="hibernate.show_sql" value="true"/>
 			<property name="hibernate.format_sql" value="true"/>
+
+			<!-- 以下、追記したプロパティ-->
+
+             <!-- 接続プールに保持する最小コネクション数 -->
+            <property name="hibernate.c3p0.min_size" value="5" />
+
+            <!-- 接続プールに保持できる最大コネクション数 -->
+            <property name="hibernate.c3p0.max_size" value="20" />
+
+            <!-- 使用されないコネクションが生存する時間、指定しないと0=永久に残る -->
+            <!-- 多分これが重要な気がします。。。 -->
+            <property name="hibernate.c3p0.timeout" value="50" />
+
+            <!-- c3p0のグローバルPreparedStatementキャッシュ・サイズ -->
+            <property name="hibernate.c3p0.max_statements" value="50" />
+
+            <!-- 接続プール内のアイドル状態のコネクションを時間間隔「0以外の数字」でチェックする -->
+            <property name="hibernate.c3p0.idle_test_period" value="2000" />
+
+            <!-- デフォルトのConnectionTester（ConnectionTesterClassのデフォルト設定）を使用してコネクションを確認するためのクエリを定義 -->
+            <property name="hibernate.c3p0.preferredTestQuery" value="select 1"/>
+
+            <property name="javax.persistence.jdbc.user" value="b3b438c2b5217e"/>
+
+            <!-- 以上、追記したプロパティ-->
+
+
+
 		</properties>
 	</persistence-unit>
 </persistence>
